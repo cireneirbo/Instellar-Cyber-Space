@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,7 @@ namespace Instellar_Cyber_Space
 {
 	public class Startup
 	{
+		private string _nasaApiKey = null;
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
@@ -20,6 +22,7 @@ namespace Instellar_Cyber_Space
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			_nasaApiKey = Configuration["Nasa:NasaApiKey"];
 
 			services.AddControllersWithViews();
 
@@ -65,6 +68,13 @@ namespace Instellar_Cyber_Space
 				{
 					spa.UseReactDevelopmentServer(npmScript: "start");
 				}
+			});
+
+			//probably optional
+			app.Run(async (context) =>
+			{
+				var result = string.IsNullOrEmpty(_nasaApiKey) ? "Null" : "Not Null";
+				await context.Response.WriteAsync($"Secret is {result}");
 			});
 		}
 	}
