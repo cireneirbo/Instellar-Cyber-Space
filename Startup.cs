@@ -11,7 +11,7 @@ namespace Instellar_Cyber_Space
 {
 	public class Startup
 	{
-		private string _nasaApiKey = null;
+		//private string _nasaApiKey = null;
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
@@ -22,7 +22,7 @@ namespace Instellar_Cyber_Space
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			_nasaApiKey = Configuration["Nasa:NasaApiKey"];
+			//_nasaApiKey = Configuration["Nasa:NasaApiKey"];
 
 			services.AddControllersWithViews();
 
@@ -71,11 +71,11 @@ namespace Instellar_Cyber_Space
 			});
 
 			//probably optional
-			app.Run(async (context) =>
+			/*app.Run(async (context) =>
 			{
 				var result = string.IsNullOrEmpty(_nasaApiKey) ? "Null" : "Not Null";
 				await context.Response.WriteAsync($"Secret is {result}");
-			});
+			});*/
 		}
 	}
 }
