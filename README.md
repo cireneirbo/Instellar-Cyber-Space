@@ -5,3 +5,4 @@ Uses NASA's api.nasa.gov to call and display astronomical data and images on a w
 
 https://api.nasa.gov/
 https://stackoverflow.com/questions/40131672/storing-production-secrets-in-asp-net-core
+https://stackoverflow.com/questions/36062670/encrypted-configuration-in-asp-net-core
