@@ -40,7 +40,7 @@ export class FetchMarsForecast extends Component {
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : FetchData.renderForecastsTable(this.state.forecasts);
+            : FetchMarsForecast.renderForecastsTable(this.state.forecasts);
 
         return (
             <div>
